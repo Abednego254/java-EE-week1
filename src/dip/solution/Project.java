@@ -13,5 +13,5 @@ public class Project {
 
     public void implement() {
         developers.forEach(Developer::develop);
-    }
+    } 
 }
