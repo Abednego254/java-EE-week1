@@ -66,3 +66,33 @@ It states that no code should be forced to depend on methods it does not use.
 Please check the `src/isp/` directory for the code examples:
 - **Violation (`src/isp/violation/Worker.java`)**: A single `Worker` interface has both `work()` and `eat()` methods. A `RobotWorker` is forced to implement `eat()` even though robots don't eat.
 - **Solution (`src/isp/solution/WorkerSolution.java`)**: Segregates interfaces into smaller, more specific ones (`Workable` and `Eatable`). A `HumanWorker` implements both, while a `RobotWorker` only implements `Workable`.
+
+---
+
+# Creational Design Patterns
+
+Design patterns provide general reusable solutions to common problems that occur in software design. Creational patterns specifically deal with object creation mechanisms, trying to create objects in a manner suitable to the situation.
+
+## 1. Singleton Pattern
+The **Singleton Pattern** ensures that a class has only one instance, while providing a global access point to this instance.
+
+### Code Example Explanation:
+Please check the `src/dip/solution/ProjectManager.java` and `src/coffee/CoffeeMachine.java` directories for the code examples:
+- **`ProjectManager`**: Prevents direct instantiation to ensure only one manager handles projects.
+- **`CoffeeMachine`**: Represents the shop's single espresso machine. Repeated calls to `getInstance()` return the exact same object in memory.
+
+## 2. Factory Pattern
+The **Factory Pattern** defines an interface for creating an object, but lets subclasses alter the type of objects that will be created. It hides the initialization complexity from the user.
+
+### Code Example Explanation:
+Please check the `src/dip/solution/DeveloperFactory.java` and `src/coffee/CoffeeFactory.java` directories for the code examples:
+- **`DeveloperFactory`**: Takes a string request (e.g., "Backend Developer") and handles the logic to instantiate and return the correct specific `Developer` implementation.
+- **`CoffeeFactory`**: Takes a string (e.g., "Latte") and seamlessly returns a concrete `Latte` or `Expresso` object that implements the `Coffee` interface.
+
+## 3. Builder Pattern
+The **Builder Pattern** separates the construction of a complex object from its representation so that the same construction process can create different representations. It allows you to build objects step-by-step.
+
+### Code Example Explanation:
+Please check the `src/dip/solution/Project.java` and `src/coffee/CoffeeOrder.java` directories for the code examples:
+- **`ProjectBuilder`**: Allows constructing a complex `Project` by chaining methods like `.setName()`, `.setBudget()`, and `.addDeveloper()` before calling `.build()`.
+- **`CoffeeOrderBuilder`**: Easily constructs a custom `CoffeeOrder` step-by-step by chaining methods like `.setCustomerName()`, `.setSize()`, and `.setExtraShots()`.
