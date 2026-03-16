@@ -96,3 +96,25 @@ The **Builder Pattern** separates the construction of a complex object from its 
 Please check the `src/dip/solution/Project.java` and `src/coffee/CoffeeOrder.java` directories for the code examples:
 - **`ProjectBuilder`**: Allows constructing a complex `Project` by chaining methods like `.setName()`, `.setBudget()`, and `.addDeveloper()` before calling `.build()`.
 - **`CoffeeOrderBuilder`**: Easily constructs a custom `CoffeeOrder` step-by-step by chaining methods like `.setCustomerName()`, `.setSize()`, and `.setExtraShots()`.
+
+## 4. Adapter Pattern (Structural)
+The **Adapter Pattern** acts as a connector between two incompatible interfaces that otherwise cannot be connected directly.
+
+### Code Example Explanation:
+Please check the `src/dip/solution/DesignerAdapter.java` file:
+- **`FreelanceDesigner`**: Has an incompatible method `designUI()`.
+- **`DesignerAdapter`**: Implements our expected `Developer` interface. It wraps the freelancer, and when `develop()` is called, it translates the call to the freelancer's `designUI()`.
+
+## 5. Decorator Pattern (Structural)
+The **Decorator Pattern** allows behavior to be added to an individual object, dynamically at runtime, without affecting the behavior of other objects from the same class.
+
+### Code Example Explanation:
+Please check the `src/dip/solution/SeniorDeveloperDecorator.java` file:
+- **`SeniorDeveloperDecorator`**: Wraps any standard developer. It executes their standard `develop()` method, but then dynamically adds a brand new behavior: reviewing code.
+
+## 6. Facade Pattern (Structural)
+The **Facade Pattern** hides the complexities of a system and provides a simple interface to the client from where the client can access the system.
+
+### Code Example Explanation:
+Please check the `src/dip/solution/ITDepartmentFacade.java` file:
+- **`ITDepartmentFacade`**: Instead of forcing the `Main` class to interact with Factories, Builders, and Singletons manually, this facade provides a single `startStandardWebProject()` method that coordinates all those sub-systems automatically.

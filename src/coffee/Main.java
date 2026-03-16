@@ -8,7 +8,7 @@ public class Main {
         CoffeeMachine machine1 = CoffeeMachine.getInstance();
         CoffeeMachine machine2 = CoffeeMachine.getInstance();
 
-        System.out.println("Is these machines the same? " + (machine1 == machine2));
+        System.out.println("Are these machines the same? " + (machine1 == machine2));
 
         System.out.println("\n===== FACTORY PATTERN =====");
 
@@ -29,5 +29,19 @@ public class Main {
         System.out.println("Order placed successfully! ");
 
         machine1.brew();
+        
+        System.out.println("\n===== ADAPTER PATTERN =====");
+        OldTeaMaker teaMaker = new OldTeaMaker();
+        Coffee adaptedTea = new TeaAdapter(teaMaker);
+        adaptedTea.prepare(); // Calling prepare() silently calls steer()!
+        
+        System.out.println("\n===== DECORATOR PATTERN =====");
+        // Wrap a plain espresso with vanilla and whip
+        Coffee fancyEspresso = new WhippedCreamDecorator(new VanillaSyrupDecorator(expresso));
+        fancyEspresso.prepare();
+        
+        System.out.println("\n===== FACADE PATTERN =====");
+        CoffeeShopFacade appButton = new CoffeeShopFacade();
+        appButton.orderSignatureVanillaLatte();
     }
 }
